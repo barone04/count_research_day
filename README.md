@@ -1,4 +1,4 @@
-# Independence – Daily Counter
+# Independence Researcher – Daily Counter
 
 ![Days_Free](https://img.shields.io/badge/Days_Free-1-brightgreen)
 ![Status](https://img.shields.io/badge/Unemployed-(aka_Researcher)-violet)
