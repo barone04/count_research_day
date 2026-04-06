@@ -1,33 +1,50 @@
-from datetime import datetime
+from datetime import date, datetime, timedelta, timezone
+from pathlib import Path
 import re
 
-START_DATE = datetime(2025, 11, 20)
+TIMEZONE = timezone(timedelta(hours=7), name="Asia/Bangkok")
+START_DATE = date(2025, 9, 5)
+README_PATH = Path(__file__).resolve().with_name("README.md")
 
-def compute_days():
-    today = datetime.now()
+
+def compute_days(today: date | None = None) -> int:
+    if today is None:
+        today = datetime.now(TIMEZONE).date()
     return (today - START_DATE).days
 
-def update_readme(days):
-    with open("README.md", "r") as f:
-        content = f.read()
 
-    # Update badge: Days_Free-###-<color>
-    content = re.sub(
+def replace_once(content: str, pattern: str, replacement: str) -> str:
+    updated, count = re.subn(pattern, replacement, content, count=1)
+    if count != 1:
+        raise ValueError(f"Pattern not found: {pattern}")
+    return updated
+
+
+def format_start_date() -> str:
+    return f"{START_DATE.day} {START_DATE.strftime('%B %Y')}"
+
+
+def update_readme(days: int) -> None:
+    content = README_PATH.read_text(encoding="utf-8")
+
+    content = replace_once(
+        content,
         r"(Days_Free-)(\d+)(-[a-zA-Z]+)",
         rf"\g<1>{days}\g<3>",
-        content
     )
-
-    # Update sentence: It has been _### days_
-    content = re.sub(
+    content = replace_once(
+        content,
         r"It has been _\d+ days_",
         f"It has been _{days} days_",
-        content
+    )
+    content = replace_once(
+        content,
+        r"counts the number of days since \*\*.*?\*\*",
+        f"counts the number of days since **{format_start_date()}**",
     )
 
-    with open("README.md", "w") as f:
-        f.write(content)
+    README_PATH.write_text(content, encoding="utf-8", newline="\n")
+
 
 if __name__ == "__main__":
-    days = compute_days()
-    update_readme(days)
+    update_readme(compute_days())
