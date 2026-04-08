@@ -8,6 +8,6 @@
 
 This repository automatically updates every day and counts the number of days since **5 September 2025**, the day my research era began.
 
-Each update also reminds me to reflect on:
+Every day that passes, i always wonder that:
 
-> **"What have I done today as a researcher?"**
+> **"when I'll finally get my first paper at the A* Conferences."**
