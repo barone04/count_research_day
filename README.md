@@ -10,4 +10,4 @@ This repository automatically updates every day and counts the number of days si
 
 Every day that passes, i always wonder that:
 
-> **"when I'll finally get my first paper at the A* Conferences."**
+> **"when I'll finally get my first paper at the A\* Conferences."**
