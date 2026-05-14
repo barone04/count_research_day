@@ -2,7 +2,7 @@
 
 ![Days_Free](https://img.shields.io/badge/Days_Free-251-brightgreen)
 ![Status](https://img.shields.io/badge/Status-Independent_Researcher-blue)
-![Funding](https://img.shields.io/badge/Funding-0_EUR/month-red)
+![Funding](https://img.shields.io/badge/Funding-0_VNĐ/month-red)
 
 **It has been _251 days_ since the beginning of my independent research journey.**
 
